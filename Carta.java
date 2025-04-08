@@ -15,4 +15,8 @@ public class Carta {
     protected String getNaipe(){
         return this.naipe;
     }
+
+    protected void showCarta(){
+        System.out.println("Carta:" + this.valor + " de " + this.naipe + "\n");
+    }
 }

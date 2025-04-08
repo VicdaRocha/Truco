@@ -1,44 +1,71 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.ArrayList;
 
 public class Jogador {
-    
+
     private String nome;
     private int pontuacao = 0;
     private ArrayList<Carta> cartas = new ArrayList<Carta>();
+    public Socket socket;
+    public BufferedReader in;
+    public PrintWriter out;
 
-    Jogador(String nome){
+    Jogador(Socket socket) throws IOException {
 
+        // this.nome = nome;
+        this.socket = socket;
+        this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        this.out = new PrintWriter(socket.getOutputStream(), true);
+    }
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public void novasCartas(Baralho baralho){
+    public int getPontuacao() {
+        return this.pontuacao;
+    }
 
-        for(int i = 0; i < 3; i++){
+    public void novasCartas(Baralho baralho) {
+
+        for (int i = 0; i < 3; i++) {
             this.cartas.add(baralho.cavar());
         }
     }
 
-    public void showMao(){
+    public void showMao() {
 
-        System.out.println("\nMão de :" + this.nome);
-        for(Carta carta : this.cartas){
-            System.out.println(carta.getValor() + " de " + carta.getNaipe());
+        this.out.println("Mão de " + this.nome + ":");
+        for (Carta carta : this.cartas) {
+            this.out.println(carta.getValor() + " de " + carta.getNaipe());
         }
+        this.out.println("\n");
     }
 
-    public void pontuar(int pontos){
+    public void pontuar(int pontos) {
 
         this.pontuacao += pontos;
     }
 
-    public void showPontuacao(){
-        System.out.println(this.nome + ": " + this.pontuacao + " pontos.\n");
+    public void showPontuacao() {
+        this.out.println(this.nome + ": " + this.pontuacao + " pontos.");
     }
 
-    public Carta jogarCarta(int index){
+    public Carta jogarCarta(int index) {
 
         Carta carta = this.cartas.get(index);
         this.cartas.remove(index);
+
+        carta.showCarta();
+
         return carta;
     }
 }

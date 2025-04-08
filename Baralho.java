@@ -37,4 +37,12 @@ public class Baralho {
     public void cartaUsada(Carta carta){
         this.cartas_usadas.add(carta);
     }
+
+    public String[] getValores(){
+        return this.valores;
+    }
+
+    public String[] getNaipes(){
+        return this.naipes;
+    }
 }

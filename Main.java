@@ -1,20 +1,27 @@
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.ServerSocket;
+import java.net.Socket;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
-        Baralho baralho = new Baralho();
-        Jogador jogador1 = new Jogador("Victor");
-        Jogador jogador2 = new Jogador("John");
+        // JogoIndividual jogo = new JogoIndividual(new Jogador("Victor"), new Jogador("John"));
 
-        baralho.showBaralho();
-        baralho.embaralhar();
-        baralho.showBaralho();
+        // jogo.darAsCartas();
+        // jogo.vira();
+        // jogo.showInfoJogadores();
+        // jogo.showInfoPartida();
         
-        jogador1.novasCartas(baralho);
-        jogador1.showMao();
-        jogador1.showPontuacao();
+        // //PRIMEIRA RODADA
+        // jogo.rodada(jogo.jogador1.jogarCarta(0), jogo.jogador2.jogarCarta(0));
+        // jogo.showInfoJogadores();
+        // //SEGUNDA RODADA
+        // jogo.rodada(jogo.jogador1.jogarCarta(0), jogo.jogador2.jogarCarta(0));
+        // jogo.showInfoJogadores();
+        // //TERCEIRA RODADA
+        // jogo.rodada(jogo.jogador1.jogarCarta(0), jogo.jogador2.jogarCarta(0));
+        // jogo.showInfoJogadores();
         
-        jogador2.novasCartas(baralho);
-        jogador2.showMao();
-        jogador2.showPontuacao();
     }
 }
