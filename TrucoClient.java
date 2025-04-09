@@ -1,10 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Scanner;
 
 public class TrucoClient {
     public static void main(String[] args) throws IOException {
@@ -19,7 +17,8 @@ public class TrucoClient {
 
                 String linha;
                 while ((linha = in.readLine()) != null) {
-                    System.out.println("Servidor: " + linha);
+                    // System.out.println("Servidor: " + linha);
+                    System.out.println(linha);
         
                     // Se o servidor pediu algo, vamos responder:
                     if (linha.toLowerCase().contains("digite")) {
@@ -29,6 +28,12 @@ public class TrucoClient {
                     }
 
                     if (linha.toLowerCase().contains("[")) {
+                        System.out.print("Você: ");
+                        String resposta = keyboard.readLine();
+                        out.println(resposta);
+                    }
+
+                    if (linha.toLowerCase().contains("trucar")) {
                         System.out.print("Você: ");
                         String resposta = keyboard.readLine();
                         out.println(resposta);

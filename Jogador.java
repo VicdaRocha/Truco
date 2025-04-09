@@ -9,7 +9,7 @@ public class Jogador {
 
     private String nome;
     private int pontuacao = 0;
-    private ArrayList<Carta> cartas = new ArrayList<Carta>();
+    public ArrayList<Carta> cartas = new ArrayList<Carta>();
     public Socket socket;
     public BufferedReader in;
     public PrintWriter out;
@@ -41,13 +41,33 @@ public class Jogador {
         }
     }
 
-    public void showMao() {
+    public void getMao() {
+        this.out.println("Sua mão:");
+        this.cartas.forEach(carta -> this.out.println(carta));
+    }
 
-        this.out.println("Mão de " + this.nome + ":");
+    // public void showMao() {
+
+    // this.out.println("Mão de " + this.nome + ":");
+    // for (Carta carta : this.cartas) {
+    // this.out.println(this.cartas.indexOf(carta) + " - " + carta.getValor() + " de
+    // " + carta.getNaipe());
+    // }
+    // }
+    public void showMao() {
+        
+        System.out.println(this.out);
+
         for (Carta carta : this.cartas) {
-            this.out.println(carta.getValor() + " de " + carta.getNaipe());
+            System.out.println(carta);
+            this.out.println(carta);
         }
-        this.out.println("\n");
+
+        // this.out.println("Sua mão, " + this.nome + ":");
+        // for (int i = 0; i < this.cartas.size(); i++) {
+        //     Carta carta = this.cartas.get(i);
+        //     this.out.println(i + " - " + carta.getValor() + " de " + carta.getNaipe());
+        // }
     }
 
     public void pontuar(int pontos) {

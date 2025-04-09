@@ -10,6 +10,7 @@ public class Truco {
     private String manilha;
     private List<String> ordem = new ArrayList<>();
     public List<Jogador> jogadores = new ArrayList<>();
+    public int[] valorRodada = {1,1,1};
 
     // Truco(Jogador jogador1, Jogador jogador2){
     //     this.jogador1 = jogador1;
@@ -76,10 +77,12 @@ public class Truco {
         }
     }
 
-    public void showVira(){
-        System.out.println("Vira:\n" + this.vira.getValor() + " de " + this.vira.getNaipe() + "\n");
-    }
+    public void makeTruco(List<Jogador> jogadores, int rodada, int valor){
 
+        for (Jogador jogador : jogadores) {
+            jogador.out.println("Trucar?");
+        }
+    }
 
     public void showInfoJogadores(){
         for (Jogador jogador : this.jogadores){
@@ -88,18 +91,37 @@ public class Truco {
         }
     }
 
-    public void showInfoPartida(){
-        this.showVira();
-        this.showManilha();
-        this.showOrdem();
+    public void showVira(List<Jogador> jogadores){
+
+        for (Jogador jogador : jogadores) {
+            
+            jogador.out.println("Vira:" + this.vira.getValor() + " de " + this.vira.getNaipe());
+        }
     }
 
-    public void showManilha(){
-        System.out.println("Manilha:\n" + this.manilha + "\n");
+    public void showManilha(List<Jogador> jogadores){
+
+        for (Jogador jogador : jogadores) {
+            
+            jogador.out.println("Manilha:" + this.manilha);
+        }
     }
 
-    public void showOrdem(){
-        System.out.println("Ordem: " + this.ordem);
+    public void showOrdem(List<Jogador> jogadores){
+
+        for (Jogador jogador : jogadores) {
+                    
+            jogador.out.println("Ordem: " + this.ordem);
+        }
+    }
+
+    public void showMaoJogadores(){
+        
+        for (Jogador jogador : this.jogadores) {
+            System.out.println("inicio");
+            jogador.showMao();
+            System.out.println("fim");
+        }
     }
 
     public void rodada(Carta cartaJogador1, Carta cartaJogador2){
