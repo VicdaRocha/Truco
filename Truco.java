@@ -40,6 +40,26 @@ public class Truco {
         this.makeManilha(vira);
     }
 
+    public int verificarCartasJogadas(List<Carta> cartas){
+
+        List<int> valorJogador = new ArrayList<>();
+        cartas.forEach(carta -> {
+            this.baralho.cartaUsada(carta);
+            valorJogador.add(this.baralho.ordem.indexOf(carta.getValor()));
+        });
+        int maiorValorJogado = 9;
+        valorJogador.forEach(valor -> {
+            maiorValorJogado = valor <= maiorValorJogado ? valor : maiorValorJogado;
+        })
+
+        if (maiorValorJogado == 9) {
+            //verificar naipe
+        }
+        if (maiorValorJogado != 9) {
+            return maiorValorJogado;
+        }
+    }
+
     private void makeManilha(Carta vira){
 
         String[] valores = this.baralho.getValores();
@@ -77,12 +97,10 @@ public class Truco {
         }
     }
 
-    public void makeTruco(List<Jogador> jogadores, int rodada, int valor){
+    // public void askTruco(List<Jogador> jogadores, int rodada, int valor){
 
-        for (Jogador jogador : jogadores) {
-            jogador.out.println("Trucar?");
-        }
-    }
+        
+    // }
 
     public void showInfoJogadores(){
         for (Jogador jogador : this.jogadores){

@@ -56,11 +56,9 @@ public class Jogador {
     // }
     public void showMao() {
         
-        System.out.println(this.out);
-
+        this.out.println("Suas cartas:");
         for (Carta carta : this.cartas) {
-            System.out.println(carta);
-            this.out.println(carta);
+            this.out.println(this.cartas.indexOf(carta) + " - " + carta.getValor() + " de " + carta.getNaipe());
         }
 
         // this.out.println("Sua mão, " + this.nome + ":");
